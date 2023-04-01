@@ -26,7 +26,6 @@ const ProfileQuestion = (props) => {
                 </Text>
             </CardBody>
             <CardFooter justify='center' color={"blue.400"}
-                flexWrap='wrap'
                 sx={{
                     '& > button': {
                         minW: '136px',
