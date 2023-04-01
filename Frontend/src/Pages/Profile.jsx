@@ -174,6 +174,7 @@ function Profile() {
                         </VStack>
                     </Box>
                     <Heading color={"white"} margin={"10"} fontSize={"3xl"} as="b">Your NFTs</Heading>
+                    {userNfts.length === 0 && <Text color={"white"} fontSize={"2xl"} as="b">No NFTs Found</Text>}
                     <SimpleGrid flexWrap={"wrap"} columns={[1, 2, 3]} gap={6} width={"5xl"} paddingBottom="10">
                         {
                             userNfts.map((val, idx) => {
@@ -182,6 +183,7 @@ function Profile() {
                         }
                     </SimpleGrid>
                     <Heading color={"white"} margin={"10"} fontSize={"3xl"} as="b">Your Questions</Heading>
+                    {questions.length === 0 && <Text color={"white"} fontSize={"2xl"} as="b">No Questions Found</Text>}
                     <Box padding="5" >
                         <Center padding="5">
                             <SimpleGrid columns={[1, 2, 3]} gap={6} width={"5xl"}>
