@@ -12,7 +12,7 @@ const Query = () => {
     useEffect(() => {
         const getQueries = async () => {
             setloading(true)
-            const response = await axios.get("http://localhost:4000/question/get-question");
+            const response = await axios.get("https://decodehub-app.onrender.com/question/get-question");
             setQuestions(response.data);
             console.log(response.data)
             setloading(false)

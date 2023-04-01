@@ -43,13 +43,13 @@ const AnswerCard = (props) => {
     const upClick = async () => {
         try {
 
-            await axios.post(`http://localhost:4000/answer/upvote/${props.id}`, {
+            await axios.post(`https://decodehub-app.onrender.com/answer/upvote/${props.id}`, {
                 userId: userId
             })
-            const totalupClicks = await axios.get(`http://localhost:4000/answer/upvotes/${props.id}`)
+            const totalupClicks = await axios.get(`https://decodehub-app.onrender.com/answer/upvotes/${props.id}`)
             setCountLike(totalupClicks.data.length)
 
-            const totaldownClicks = await axios.get(`http://localhost:4000/answer/downvotes/${props.id}`)
+            const totaldownClicks = await axios.get(`https://decodehub-app.onrender.com/answer/downvotes/${props.id}`)
             setcountDislike(totaldownClicks.data.length)
 
         } catch (error) {
@@ -61,13 +61,13 @@ const AnswerCard = (props) => {
     const downClick = async () => {
         try {
 
-            await axios.post(`http://localhost:4000/answer/downvote/${props.id}`, {
+            await axios.post(`https://decodehub-app.onrender.com/answer/downvote/${props.id}`, {
                 userId: userId
             })
-            const totalupClicks = await axios.get(`http://localhost:4000/answer/upvotes/${props.id}`)
+            const totalupClicks = await axios.get(`https://decodehub-app.onrender.com/answer/upvotes/${props.id}`)
             setCountLike(totalupClicks.data.length)
 
-            const totaldownClicks = await axios.get(`http://localhost:4000/answer/downvotes/${props.id}`)
+            const totaldownClicks = await axios.get(`https://decodehub-app.onrender.com/answer/downvotes/${props.id}`)
             setcountDislike(totaldownClicks.data.length)
 
         } catch (error) {
