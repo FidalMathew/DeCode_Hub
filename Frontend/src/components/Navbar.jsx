@@ -57,7 +57,7 @@ const Navbar = ({ queryBar, isAdmin }) => {
       {queryBar ? <InputGroup width={"container.md"}>
         <Input backgroundColor={"white"} placeholder="Search Query" rounded={"3xl"} />
         <InputRightElement children={<SearchIcon marginRight={"3"} />} />
-      </InputGroup> : isAdmin && <Text fontSize={"lg"} as="b">Admin Page</Text>}
+      </InputGroup> : isAdmin && <Text fontSize={"3xl"} color={"white"} as="b">Admin Page</Text>}
       <HStack>
         {/* <ToggleTheme /> */}
         {/* <Button width={"44"} onClick={handleConnectWallet} rounded={"3xl"} colorScheme={"blue"}>

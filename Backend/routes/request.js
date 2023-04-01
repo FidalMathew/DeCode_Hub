@@ -44,17 +44,22 @@ router.post('/add-requests', async (req, res) => {
 })
 
 router.put('/update-requests/:id', async (req, res) => {
+
     try {
-        console.log(req.params.id);
-        const request = await Request.find({ "_id": req.params.id });
-        request.isApproved = true;
-        const updatedRequest = await request.save();
-        return res.json(updatedRequest).status(200);
-    } catch (err) {
-        console.error(err);
-        return res.json(err).status(500);
+        const request = await Request.findByIdAndUpdate(req.params.id, { isApproved: true }, { new: true })
+        if (!request) {
+            return res.status(404).json({ message: "Request not found" })
+        }
+        const newRequest = await request.save()
+        return res.json(newRequest).status(200)
+    }
+    catch (err) {
+        console.log(err)
+        return res.json(err).status(500)
     }
 });
+
+
 
 // get all non-approved requests
 router.get('/get-requests', async (req, res) => {

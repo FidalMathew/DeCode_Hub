@@ -6,6 +6,8 @@ import MintRequest from "../components/MintRequest"
 
 const Admin = () => {
     const [requests, setRequests] = useState([])
+    const [update, setUpdate] = useState(true)
+
 
     const URL = "http://localhost:4000/"
 
@@ -16,12 +18,14 @@ const Admin = () => {
             console.log("adsd", response.data)
         };
         getRequests();
-    }, []);
+    }, [update]);
+
+
     return (
         <Box bg={"background"} minH={"100vh"}>
             <Navbar queryBar={false} isAdmin={true} />
             {
-                requests.map((req, idx) => (<MintRequest key={idx} id={req._id} address={req.address} nftType={req.nftType} />))
+                requests.map((req, idx) => (<MintRequest key={idx} id={req._id} address={req.address} nftType={req.nftType} setUpdate={setUpdate} update={update} />))
             }
         </Box>
     )

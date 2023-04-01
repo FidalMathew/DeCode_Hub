@@ -20,23 +20,23 @@ const MintRequest = (props) => {
 
     // get all nfts and fetch the token id for the next mint
 
-    const getNFTs = async () => {
-        const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${contractAddress}/bigmaps/ledger/keys`
-        );
-        const data = response.data;
-        console.log(data);
-        setNfts(data)
-    };
 
     useEffect(() => {
+        const getNFTs = async () => {
+            const response = await axios.get(
+                `https://api.ghostnet.tzkt.io/v1/contracts/${contractAddress}/bigmaps/ledger/keys`
+            );
+            const data = response.data;
+            console.log(data);
+            setNfts(data)
+        };
         getNFTs()
     }, [])
 
 
     useEffect(() => {
-        console.log(nfts.length)
         setTokenId(nfts.length);
+        console.log(nfts.length)
     }, [nfts])
 
     const getContract = async () => {
@@ -57,9 +57,8 @@ const MintRequest = (props) => {
             const op = await contract.methods.mint(props.address, amount, MichelsonMap.fromLiteral({ '': urlC }), tokenId).send();
             await op.confirmation(3);
 
-            const res = await axios.put(`http://localhost:4000/request/update-requests/${props.id}`, {
-                isApproved: true
-            })
+            const res = await axios.put(`http://localhost:4000/request/update-requests/${props.id}`)
+            props.setUpdate(!props.update)
             console.log(res.data)
         } catch (error) {
             console.log(error);

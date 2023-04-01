@@ -22,11 +22,11 @@ const Home = () => {
                         <Text fontWeight={"extrabold"} color={"white"} fontSize='5xl'>Solve problems,</Text>
                         <Text fontWeight={"extrabold"} fontSize='4xl' className="nft">earn NFTs!</Text>
                         <Heading marginBottom={"5"} size={"md"} color={"white"}>Get rewarded for helping others.</Heading>
-                        {walletAddress && 
-                            <Button  onClick={()=>navigate('/query')} marginBottom={"5"} width={"xs"} colorScheme="teal" color={"white"} variant={"solid"}>
+                        {walletAddress &&
+                            <Button onClick={() => navigate('/query')} marginBottom={"5"} width={"xs"} colorScheme="teal" color={"white"} variant={"solid"}>
                                 Go to Feed
                             </Button>
-                           }
+                        }
                     </Flex>
                     <Success height={"30rem"} />
                 </HStack>

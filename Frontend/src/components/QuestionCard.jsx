@@ -28,7 +28,10 @@ const QuesionCard = (props) => {
         codeLanguage: '',
         description: '',
     })
+
+
     // new content
+
     const [question, setQuestion] = useState({})
     const [answers, setAnswers] = useState([])
     const { id } = useParams()
@@ -36,6 +39,22 @@ const QuesionCard = (props) => {
     // const { userId } = useGlobalContext()
 
     const URL = "http://localhost:4000"
+
+    useEffect(() => {
+        const getQuestions = async () => {
+            const ques = await axios.get(`${URL}/question/get-question/${id}`)
+            setQuestion(ques.data[0])
+            console.log(ques.data[0])
+        }
+        const getAnswers = async () => {
+            const answers = await axios.get(`${URL}/answer/answers/${id}`)
+            console.log(answers.data)
+            setAnswers(answers.data)
+        }
+        getQuestions();
+        getAnswers();
+    }, [id, userId])
+
 
     const handleAnswer = (e) => {
         const { name, value } = e.target
@@ -138,6 +157,7 @@ const QuesionCard = (props) => {
 
                 </CardBody>
             </Card>
+            {/* {answers.map(answer => (
             <Box justifyContent={"start"} width={"100%"}>
             <Text fontSize={"2xl"} as="b" color={"gray.700"} >{props.length} {props.length === 1 ? 'Answer' : 'Answers'}</Text>
         </Box>
@@ -150,7 +170,7 @@ const QuesionCard = (props) => {
                     upvotes={answer.upvotes}
                     downvotes={answer.downvotes}
                 />
-            ))}
+            ))} */}
         </>
     )
 }
