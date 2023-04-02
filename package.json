@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/FidalMathew/Ed_4_All/issues"
   },
-  "homepage": "https://github.com/FidalMathew/Ed_4_All#readme"
+  "homepage": "https://github.com/FidalMathew/Ed_4_All#readme",
+  "dependencies": {
+    "react-loader-spinner": "^5.3.4"
+  }
 }
