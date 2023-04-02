@@ -157,20 +157,11 @@ const QuesionCard = (props) => {
 
                 </CardBody>
             </Card>
-            {/* {answers.map(answer => (
+            {/* {answers.map(answer => ( */}
             <Box justifyContent={"start"} width={"100%"}>
-            <Text fontSize={"2xl"} as="b" color={"gray.700"} >{props.length} {props.length === 1 ? 'Answer' : 'Answers'}</Text>
-        </Box>
-            {answers.map(answer => (
-                <AnswerCard
-                    key={answer._id}
-                    id={answer._id}
-                    user={answer.userId}
-                    content={answer.content}
-                    upvotes={answer.upvotes}
-                    downvotes={answer.downvotes}
-                />
-            ))} */}
+                <Text fontSize={"2xl"} as="b" color={"gray.700"} >{props.length} {props.length === 1 ? 'Answer' : 'Answers'}</Text>
+            </Box>
+             
         </>
     )
 }
