@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from "@chakra-ui/react"
+import { Box, Button, VStack, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from "@chakra-ui/react"
 
 const NFTCard = (props) => {
 
@@ -15,12 +15,12 @@ const NFTCard = (props) => {
         <Card maxW='sm'>
             <CardBody>
                 <Image
-                    src='https://watcher.guru/news/wp-content/uploads/2021/08/unnamed-2-1.png.webp'
+                    src={`https://gateway.ipfs.io/ipfs/QmTz72WkYzGmWWz2JnSPfPTLpB7oHebLGZBM6wPSysJgpW`}
                     alt='Green double couch with wooden legs'
                     borderRadius='lg'
-                    height={"xs"}
+                    // height={"xs"}    
                 />
-                <Stack mt='6' spacing='3'>
+                <VStack mt='6' spacing='3'>
                     <Heading size='md' margin={"auto"}>{nftMap[props.nftTypeContract].title}</Heading>
                     <Heading size='md' margin={"auto"}>#{props.id}</Heading>
                     <Text align={"center"} as="">
@@ -29,7 +29,7 @@ const NFTCard = (props) => {
                     {/* <Text color='blue.600' fontSize='2xl'>
                         $450
                     </Text> */}
-                </Stack>
+                </VStack>
             </CardBody>
             {/* <CardFooter>
                 <ButtonGroup spacing='2'>

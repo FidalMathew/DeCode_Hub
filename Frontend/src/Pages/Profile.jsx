@@ -41,6 +41,7 @@ function Profile() {
                 if (val.key.address === walletAddress)
                     return val
             })
+            console.log(arr)
             setUserNfts(arr)
         };
 
@@ -73,8 +74,6 @@ function Profile() {
 
             }
         }
-
-
         if (userId) {
             getNFTsByOwner()
             getUpvotes()
