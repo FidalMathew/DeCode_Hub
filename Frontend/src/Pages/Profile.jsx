@@ -48,7 +48,7 @@ function Profile() {
 
         const getUpvotes = async () => {
             try {
-                const URL = "http://localhost:4000/user"
+                const URL = "https://decodehub-app.onrender.com/user"
                 console.log(userId, 'jaydeep')
                 const response = await axios.post(`${URL}/all-upvotes`, {
                     user: userId
@@ -61,7 +61,7 @@ function Profile() {
         }
         const getQuestions = async () => {
             try {
-                const URL = "http://localhost:4000/user"
+                const URL = "https://decodehub-app.onrender.com/user"
                 const response = await axios.post(`${URL}/get-question-by-user`, {
                     userId: userId
                 })
@@ -93,7 +93,7 @@ function Profile() {
         const checkRequest = async () => {
             if (walletAddress && upvotes >= 5) {
                 // request NFT
-                const res = await axios.post("http://localhost:4000/request/add-requests", {
+                const res = await axios.post("https://decodehub-app.onrender.com/request/add-requests", {
                     address: walletAddress,
                     nftType: 1,
                     isApproved: false
@@ -117,7 +117,7 @@ function Profile() {
     useEffect(() => {
         const getRequests = async () => {
 
-            const res = await axios.get("http://localhost:4000/request/get-requests");
+            const res = await axios.get("https://decodehub-app.onrender.com/request/get-requests");
             const ans = res.data;
             setRequests(ans)
             console.log("requests", ans)
@@ -175,7 +175,7 @@ function Profile() {
                     </Box>
                     <Heading color={"white"} margin={"10"} fontSize={"3xl"} as="b">Your NFTs</Heading>
                     {userNfts.length === 0 && <Text color={"white"} fontSize={"2xl"} as="b">No NFTs Found</Text>}
-                    <SimpleGrid flexWrap={"wrap"} columns={[1, 2, 3]} gap={6} width={"5xl"} paddingBottom="10">
+                    <SimpleGrid columns={[1, 2, 3]} gap={6} width={"5xl"} paddingBottom="10">
                         {
                             userNfts.map((val, idx) => {
                                 return <NFTCard key={idx} id={val.key.nat} nftTypeContract={nftTypeContract} />

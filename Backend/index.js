@@ -22,7 +22,7 @@ mongoose.
   .then(result => {
     console.log("mongodb connected")
     app.listen(4000, () => {
-      console.log("Server connected")
+      console.log(`Server connected AT ${process.env.PORT}}`)
     })
   })
   .catch(err => {

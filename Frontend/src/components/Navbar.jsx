@@ -1,4 +1,4 @@
-import { Button, HStack, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react"
+import { Button, HStack, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Text, Image } from "@chakra-ui/react"
 import { SearchIcon } from "@chakra-ui/icons"
 import './Navbar.css'
 import ToggleTheme from "./ToggleTheme"
@@ -52,7 +52,7 @@ const Navbar = ({ queryBar, isAdmin }) => {
 
     <HStack padding={"7"} display={"flex"} justifyContent={"space-between"}>
       <Text as="b" fontSize={"2xl"} marginLeft="10" color={"white"}>
-        <Link to="/">Logo</Link>
+        <Link to="/"><img style={{height: 'auto',width: '13rem'}} src="/DeCode_Hub.png" /> </Link>
       </Text>
       {queryBar ? <InputGroup width={"container.md"}>
         <Input backgroundColor={"white"} placeholder="Search Query" rounded={"3xl"} />

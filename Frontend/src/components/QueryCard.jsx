@@ -51,7 +51,7 @@ const QueryCard = (props) => {
         //         </Flex>
         //     </CardBody>
         // </Card>
-        <Card w={"50rem"}>
+        <Card w={"50rem"} background={"#FFFBEB"}>
             <CardHeader paddingBottom={0}>
                 <Flex spacing='4'>
                     <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
