@@ -13,7 +13,7 @@ import ProfileQuestion from '../components/ProfileQuestion';
 
 function Profile() {
 
-    const contractAddress = "KT1NSMmpfLZUBY4naxi4CKQ4dhU692F59G3t"
+    const contractAddress = "KT1REz2LhQUmp6pvaZVebpuiRWoNXCq6iU5F"
     const nftTypeContract = 1;
 
     // get NFTs by owner

@@ -14,8 +14,8 @@ const MintRequest = (props) => {
 
     const [tokenId, setTokenId] = useState(0)
     const [nfts, setNfts] = useState([])
-    const contractAddress = "KT1NSMmpfLZUBY4naxi4CKQ4dhU692F59G3t"
-    const url = "ipfs://QmV2howLdzPNAtiinAQhiAR4GaGKtWvNPd3weSVjhKWeVC"
+    const contractAddress = "KT1REz2LhQUmp6pvaZVebpuiRWoNXCq6iU5F"
+    const url = "ipfs://QmWUATm299bNoVS9MypxbVcgd68fKHgyLW95s1jNX5NQB9"
     // const address = "tz1Ph1TwjnaskzUnnhwmntStrqmPy3NJPLGY"
 
     // get all nfts and fetch the token id for the next mint
