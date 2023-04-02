@@ -2,15 +2,15 @@ import { Button, HStack, Input, InputGroup, InputRightElement, Menu, MenuButton,
 import { SearchIcon } from "@chakra-ui/icons"
 import './Navbar.css'
 import ToggleTheme from "./ToggleTheme"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import useGlobalContext from "../hooks/useGlobalContext"
 import { ReactComponent as Temple } from '../assets/temple.svg';
 import { Link, useNavigate } from "react-router-dom"
 
-const Navbar = ({ queryBar, isAdmin }) => {
+const Navbar = ({ queryBar }) => {
 
   const { walletAddress, setWalletAddress, connectWallet, getActiveAccount, disconnectWallet, getUserId, checkIfWalletConnected } = useGlobalContext();
-
+  const navigate = useNavigate()
   const handleConnectWallet = async () => {
     const { wallet } = await connectWallet();
     setWalletAddress(wallet);
@@ -18,6 +18,7 @@ const Navbar = ({ queryBar, isAdmin }) => {
   const handleDisconnectWallet = async () => {
     const { wallet } = await disconnectWallet();
     setWalletAddress(wallet);
+    navigate('/')
   };
 
   useEffect(() => {
@@ -46,18 +47,27 @@ const Navbar = ({ queryBar, isAdmin }) => {
       getUserId();
   }, [walletAddress, getUserId])
 
-  const navigate = useNavigate()
+  const address = ["tz1cHtGRewCVsbFybBtTy6EM8mvSCjdimxqK"];
+
+  const [isAdmin, setisAdmin] = useState(false);
+
+  useEffect(() => {
+    if (address.includes(walletAddress)) {
+      setisAdmin(true);
+    }
+  }, [walletAddress]);
+
 
   return (
 
     <HStack padding={"7"} display={"flex"} justifyContent={"space-between"}>
       <Text as="b" fontSize={"2xl"} marginLeft="10" color={"white"}>
-        <Link to="/"><img style={{height: 'auto',width: '13rem'}} src="/DeCode_Hub.png" /> </Link>
+        <Link to="/"><img style={{ height: 'auto', width: '13rem' }} src="/DeCode_Hub.png" /> </Link>
       </Text>
       {queryBar ? <InputGroup width={"container.md"}>
         <Input backgroundColor={"white"} placeholder="Search Query" rounded={"3xl"} />
         <InputRightElement children={<SearchIcon marginRight={"3"} />} />
-      </InputGroup> : isAdmin && <Text fontSize={"3xl"} color={"white"} as="b">Admin Page</Text>}
+      </InputGroup> : !isAdmin && <Text fontSize={"3xl"} color={"white"} as="b">Admin Page</Text>}
       <HStack>
         {/* <ToggleTheme /> */}
         {/* <Button width={"44"} onClick={handleConnectWallet} rounded={"3xl"} colorScheme={"blue"}>
@@ -83,6 +93,7 @@ const Navbar = ({ queryBar, isAdmin }) => {
                 {walletAddress.slice(0, 8) + "..." + walletAddress.slice(-4)}
               </MenuButton>
               <MenuList>
+                {isAdmin && <MenuItem onClick={() => navigate('/admin')}>Admin</MenuItem>}
                 <MenuItem onClick={() => navigate('/query')}>Query Page</MenuItem>
                 <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>
                 <MenuItem onClick={handleDisconnectWallet}>Disconnect</MenuItem>

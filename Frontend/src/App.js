@@ -15,7 +15,7 @@ function App() {
 
 
   const { walletAddress } = useGlobalContext();
-  const address = ["tz1hxTwWPfqAAmqp9RiXoWBi1pTLteHD6eaN", "tz1gXMkrmVXQGyHcVmEfWUMPtuJtASRKwddY"];
+  const address = ["tz1cHtGRewCVsbFybBtTy6EM8mvSCjdimxqK"];
 
   const [isAdmin, setisAdmin] = useState(false);
 

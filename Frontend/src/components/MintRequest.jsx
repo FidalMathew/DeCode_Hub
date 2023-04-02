@@ -1,7 +1,8 @@
 import { Avatar, Button, Card, CardBody, HStack, Text, VStack } from "@chakra-ui/react"
 import { char2Bytes } from '@taquito/utils';
 import { MichelsonMap } from '@taquito/taquito';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useGlobalContext from "../hooks/useGlobalContext"
@@ -14,6 +15,7 @@ const MintRequest = (props) => {
 
     const [tokenId, setTokenId] = useState(0)
     const [nfts, setNfts] = useState([])
+    // const [loading, setLoading] = useState(false)
     const contractAddress = "KT1REz2LhQUmp6pvaZVebpuiRWoNXCq6iU5F"
     const url = "ipfs://QmWUATm299bNoVS9MypxbVcgd68fKHgyLW95s1jNX5NQB9"
     // const address = "tz1Ph1TwjnaskzUnnhwmntStrqmPy3NJPLGY"
@@ -55,8 +57,16 @@ const MintRequest = (props) => {
             const contract = await getContract();
             const urlC = char2Bytes(url);
             const op = await contract.methods.mint(props.address, amount, MichelsonMap.fromLiteral({ '': urlC }), tokenId).send();
-            await op.confirmation(3);
+            // await op.confirmation(3);
 
+            toast.promise(op.confirmation(3),
+                {
+
+                    pending: 'Minting NFT',
+                    success: 'NFT Minted 👌',
+                    error: 'Cannot Mint NFT 🤯'
+                }
+            )
             const res = await axios.put(`https://decodehub-app.onrender.com/request/update-requests/${props.id}`)
             props.setUpdate(!props.update)
             console.log(res.data)
@@ -67,6 +77,18 @@ const MintRequest = (props) => {
 
     return (
         <div>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <VStack padding={"5"}>
                 <Card width={"4xl"}>
                     <CardBody display={"flex"} justifyContent={"space-between"}>
