@@ -1,4 +1,4 @@
-import { Button, HStack, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Text, Image } from "@chakra-ui/react"
+import { Button, HStack, Avatar, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Text, Image } from "@chakra-ui/react"
 import { SearchIcon } from "@chakra-ui/icons"
 import './Navbar.css'
 import ToggleTheme from "./ToggleTheme"
@@ -76,6 +76,8 @@ const Navbar = ({ queryBar, isAdmin }) => {
             : "Connect"}
         </Button> */}
         {/* Add an ask question button on when wallet address is present */}
+
+        <a href="https://github.com/FidalMathew/DeCode_Hub" target="_blank"><Avatar src='https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/github-512.png' /></a>
 
         {walletAddress && <Button colorScheme={"teal"} color={"white"} onClick={() => navigate('/askQuestion')} rounded={"3xl"}>Ask Question</Button>}
 
