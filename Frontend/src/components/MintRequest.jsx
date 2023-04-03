@@ -67,7 +67,7 @@ const MintRequest = (props) => {
             //         error: 'Cannot Mint NFT 🤯'
             //     }
             // )
-            const res = await axios.put(`http://localhost:4000/request/update-requests/${props.id}`)
+            const res = await axios.put(`https://decodehub-app.onrender.com/request/update-requests/${props.id}`)
             props.setUpdate(!props.update)
             console.log(res.data)
         } catch (error) {
