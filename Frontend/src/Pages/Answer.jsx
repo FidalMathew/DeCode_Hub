@@ -18,7 +18,7 @@ const Answer = () => {
 
     const { userId } = useGlobalContext()
 
-    const URL = "https://decodehub-app.onrender.com"
+    const URL = "http://localhost:4000"
 
     const newAnswer = async (newans) => {
         setAnswers([...answers,newans])

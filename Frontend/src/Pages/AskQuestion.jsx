@@ -36,7 +36,7 @@ const AskQuestion = () => {
     const handleSubmit = async () => {
 
         console.log("jaydeep")
-        const URL = "https://decodehub-app.onrender.com/question/"
+        const URL = "http://localhost:4000/question/"
         // e.preventDefault()
 
         console.log(userId, input.title)

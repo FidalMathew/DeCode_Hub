@@ -38,7 +38,7 @@ const QuesionCard = (props) => {
 
     // const { userId } = useGlobalContext()
 
-    const URL = "https://decodehub-app.onrender.com"
+    const URL = "http://localhost:4000"
 
     useEffect(() => {
         const getQuestions = async () => {
@@ -66,7 +66,7 @@ const QuesionCard = (props) => {
         onClose()
         console.log(answer, 'answer state in question card when submitted')
         try {
-            const URL = "https://decodehub-app.onrender.com/answer"
+            const URL = "http://localhost:4000/answer"
             console.log(answer.description)
             console.log(answer.code)
             console.log(answer.language)

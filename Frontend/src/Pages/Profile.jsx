@@ -49,7 +49,7 @@ function Profile() {
 
         const getUpvotes = async () => {
             try {
-                const URL = "https://decodehub-app.onrender.com/user"
+                const URL = "http://localhost:4000/user"
                 console.log(userId, 'jaydeep')
                 const response = await axios.post(`${URL}/all-upvotes`, {
                     user: userId
@@ -62,7 +62,7 @@ function Profile() {
         }
         const getQuestions = async () => {
             try {
-                const URL = "https://decodehub-app.onrender.com/user"
+                const URL = "http://localhost:4000/user"
                 const response = await axios.post(`${URL}/get-question-by-user`, {
                     userId: userId
                 })
@@ -92,7 +92,7 @@ function Profile() {
         const checkRequest = async () => {
             if (walletAddress && upvotes >= 5) {
                 // request NFT
-                const res = await axios.post("https://decodehub-app.onrender.com/request/add-requests", {
+                const res = await axios.post("http://localhost:4000/request/add-requests", {
                     address: walletAddress,
                     nftType: 1,
                     isApproved: false
@@ -116,7 +116,7 @@ function Profile() {
     useEffect(() => {
         const getRequests = async () => {
 
-            const res = await axios.get("https://decodehub-app.onrender.com/request/get-requests");
+            const res = await axios.get(`http://localhost:4000/request/get-requests/${walletAddress}`);
             const ans = res.data;
             setRequests(ans)
             console.log("requests", ans)

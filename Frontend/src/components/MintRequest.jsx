@@ -57,17 +57,17 @@ const MintRequest = (props) => {
             const contract = await getContract();
             const urlC = char2Bytes(url);
             const op = await contract.methods.mint(props.address, amount, MichelsonMap.fromLiteral({ '': urlC }), tokenId).send();
-            // await op.confirmation(3);
+            await op.confirmation(3);
 
-            toast.promise(op.confirmation(3),
-                {
+            // toast.promise(op.confirmation(3),
+            //     {
 
-                    pending: 'Minting NFT',
-                    success: 'NFT Minted 👌',
-                    error: 'Cannot Mint NFT 🤯'
-                }
-            )
-            const res = await axios.put(`https://decodehub-app.onrender.com/request/update-requests/${props.id}`)
+            //         pending: 'Minting NFT',
+            //         success: 'NFT Minted 👌',
+            //         error: 'Cannot Mint NFT 🤯'
+            //     }
+            // )
+            const res = await axios.put(`http://localhost:4000/request/update-requests/${props.id}`)
             props.setUpdate(!props.update)
             console.log(res.data)
         } catch (error) {
@@ -94,7 +94,7 @@ const MintRequest = (props) => {
                     <CardBody display={"flex"} justifyContent={"space-between"}>
                         <HStack>
                             <Avatar size={"sm"} />
-                            <Text fontSize={"sm"}>{props.userId}</Text>
+                            <Text fontSize={"sm"}>{props.address}</Text>
                             <Text>requested for <span style={{ fontWeight: '700' }}>#{props.nftType}</span> NFT</Text>
                         </HStack>
                         <Button onClick={() => mintNFT()}>Mint NFT</Button>

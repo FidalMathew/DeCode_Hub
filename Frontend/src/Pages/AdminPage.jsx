@@ -9,11 +9,11 @@ const Admin = () => {
     const [update, setUpdate] = useState(true)
 
 
-    const URL = "https://decodehub-app.onrender.com/"
+    const URL = "http://localhost:4000/"
 
     useEffect(() => {
         const getRequests = async () => {
-            const response = await axios.get("https://decodehub-app.onrender.com/request/get-requests");
+            const response = await axios.get("http://localhost:4000/request/get-requests");
             setRequests(response.data);
             console.log("adsd", response.data)
         };

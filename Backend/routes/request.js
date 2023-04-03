@@ -35,6 +35,7 @@ router.post('/add-requests', async (req, res) => {
     })
     try {
         const newRequest = await request.save()
+        console.log(newRequest)
         return res.json(newRequest).status(200)
     }
     catch (err) {
@@ -59,7 +60,20 @@ router.put('/update-requests/:id', async (req, res) => {
     }
 });
 
+// profile requests
+router.get('/get-requests/:address', async (req, res) => {
+    try {
+        const reqf = await Request.find({ address: req.params.address, isApproved: false })
 
+        if(!reqf){
+            return res.status(200).json({message: "No requests found", data: []})
+        }
+        return res.json(reqf).status(200)
+    }
+    catch (err) {
+        return res.json(err).status(500)
+    }
+});
 
 // get all non-approved requests
 router.get('/get-requests', async (req, res) => {

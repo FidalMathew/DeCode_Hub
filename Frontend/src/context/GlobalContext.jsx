@@ -74,7 +74,7 @@ const GlobalContextProvider = ({ children }) => {
     const getUserId = async () => {
         try {
 
-            const user = await axios.post('https://decodehub-app.onrender.com/user/signup', {
+            const user = await axios.post('http://localhost:4000/user/signup', {
                 address: walletAddress
             });
             console.log(user.data._id);
