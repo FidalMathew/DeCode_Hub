@@ -11,6 +11,7 @@ dotenv.config()
 
 app.use(express.json())
 app.use(cors())
+app.use(morgan('tiny'));
 
 app.use("/answer", answerRoutes)
 app.use("/user", userRoutes)
